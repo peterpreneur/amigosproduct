@@ -31,7 +31,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private String imageUrl;
-    private int stockLevel;
+    private Integer stockLevel;
     private Instant createdAt;
     private Instant updatedAt;
     private Instant deletedAt;
