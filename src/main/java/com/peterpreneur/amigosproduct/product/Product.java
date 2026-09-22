@@ -36,4 +36,19 @@ public class Product {
     private Instant updatedAt;
     private Instant deletedAt;
 
+    @Override
+    public String toString() {
+        return "Product [" + System.lineSeparator()
+                + "id=" + id + "," + System.lineSeparator()
+                + "name=" + name + "," + System.lineSeparator()
+                + "description=" + description + "," + System.lineSeparator()
+                + "price=" + price + "," + System.lineSeparator()
+                + "imageUrl=" + imageUrl + "," + System.lineSeparator()
+                + "stockLevel=" + stockLevel + "," + System.lineSeparator()
+                + "createdAt=" + createdAt + "," + System.lineSeparator()
+                + "updatedAt=" + updatedAt + "," + System.lineSeparator()
+                + "deletedAt=" + deletedAt + System.lineSeparator()
+                + "]";
+    }
+
 }

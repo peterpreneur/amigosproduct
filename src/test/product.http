@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/v1/products
+Content-Type: application/json
+
+{
+  "name": "Running Shoes",
+  "description": "Daily training shoes",
+  "price": 120,
+  "imageUrl": "https://example.com/running-shoes.jpg",
+  "stockLevel": 25
+}
