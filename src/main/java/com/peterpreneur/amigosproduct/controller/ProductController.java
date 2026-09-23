@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.peterpreneur.amigosproduct.dto.NewProductRequest;
+import com.peterpreneur.amigosproduct.dto.ProductResponse;
 import com.peterpreneur.amigosproduct.product.Product;
 import com.peterpreneur.amigosproduct.service.ProductService;
 
@@ -46,12 +48,13 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Product> getProductById(@PathVariable UUID id) {
+    public Optional<ProductResponse> getProductById(@PathVariable UUID id) {
         return productService.findProductById(id);
     }
 
     @GetMapping("/search")
-    public List<Product> getProductsByName (@RequestParam(required= false) String name, @RequestParam (required=false) Integer stockLevel) {
+    public List<ProductResponse> getProductsByName(@RequestParam(required = false) String name,
+            @RequestParam(required = false) Integer stockLevel) {
         return productService.getProductsByNameAndStockLevel(name, stockLevel);
     }
 
@@ -154,6 +157,11 @@ public class ProductController {
 
         return product;
 
+    }
+
+    @PostMapping("/save")
+    public UUID saveProduct(@RequestBody NewProductRequest product) {
+        return productService.saveNewProduct(product);
     }
 
 }
