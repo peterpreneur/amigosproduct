@@ -8,3 +8,11 @@ Content-Type: application/json
   "imageUrl": "https://example.com/running-shoes.jpg",
   "stockLevel": 25
 }
+
+### Get all products
+GET http://localhost:8080/api/v1/products
+Accept: application/json
+
+### Test Get Debug
+GET http://localhost:8080/api/v1/products/debug
+Accept: application/json
