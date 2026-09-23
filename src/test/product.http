@@ -9,10 +9,15 @@ Content-Type: application/json
   "stockLevel": 25
 }
 
-### Get all products
-GET http://localhost:8080/api/v1/products
+### Get all products using repository
+GET http://localhost:8080/api/v1/products/repo
 Accept: application/json
 
-### Test Get Debug
-GET http://localhost:8080/api/v1/products/debug
+### Test Get by name and stockLevel
+GET http://localhost:8080/api/v1/products/search?name=Running%20Shoes&stockLevel=25
+Accept: application/json
+
+
+### Test Get by UUID
+GET http://localhost:8080/api/v1/products/59ad5310-178b-482e-97c5-247636bbe3af
 Accept: application/json

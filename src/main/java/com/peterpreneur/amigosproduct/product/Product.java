@@ -36,9 +36,11 @@ public class Product {
     private Instant updatedAt;
     private Instant deletedAt;
 
-    @PrePersist 
-    public void prePersist(){
-        if(this.id == null) {this.id = UUID.randomUUID()};
+    @PrePersist
+    public void prePersist() {
+        if (this.id == null) {
+            this.id = UUID.randomUUID();
+        };
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
     }
