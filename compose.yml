@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: amigosproduct-postgres
+    environment:
+      POSTGRES_DB: amigosdb
+      POSTGRES_USER: peter
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U peter -d amigosdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  product-service:
+    container_name: amigosproduct-service
+    build:
+      context: .
+    image: amigosproduct/product-service:local
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/amigosdb
+      SPRING_DATASOURCE_USERNAME: peter
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
